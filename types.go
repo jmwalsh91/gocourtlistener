@@ -193,7 +193,7 @@ type Docket struct {
 
 // OriginatingCourtInformationResponse represents the response structure from the originating-court-information endpoint.
 type OriginatingCourtInformationResponse struct {
-	Count    string                        `json:"count"`
+	Count    FlexibleCount                 `json:"count"`
 	Next     string                        `json:"next"`
 	Previous *string                       `json:"previous"`
 	Results  []OriginatingCourtInformation `json:"results"`
