@@ -51,34 +51,6 @@ type SearchResult struct {
 	Syllabus                 string    `json:"syllabus"`
 }
 
-// Opinion represents an opinion object within a search result.
-type Opinion struct {
-	AuthorID    interface{} `json:"author_id"`
-	Cites       []int       `json:"cites"`
-	DownloadURL string      `json:"download_url"`
-	ID          int         `json:"id"`
-	JoinedByIDs []int       `json:"joined_by_ids"`
-	LocalPath   string      `json:"local_path"`
-	Meta        Meta        `json:"meta"`
-	OrderingKey *string     `json:"ordering_key"`
-	PerCuriam   bool        `json:"per_curiam"`
-	Sha1        string      `json:"sha1"`
-	Snippet     string      `json:"snippet"`
-	Type        string      `json:"type"`
-}
-
-// Meta contains metadata for search results.
-type Meta struct {
-	Timestamp   string `json:"timestamp"`
-	DateCreated string `json:"date_created"`
-	Score       Score  `json:"score"`
-}
-
-// Score contains the BM25 relevance score.
-type Score struct {
-	BM25 float64 `json:"bm25"`
-}
-
 // Search performs a GET request to the search endpoint with the provided query string.
 func (c *Client) Search(query string) (*SearchResponse, error) {
 	base, err := url.Parse(c.BaseURL)
