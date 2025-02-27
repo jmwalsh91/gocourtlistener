@@ -54,6 +54,50 @@ type Score struct {
 	BM25 float64 `json:"bm25"`
 }
 
+// SearchResponse represents the response from the search endpoint.
+type SearchResponse struct {
+	Count    int            `json:"count"`
+	Next     string         `json:"next"`
+	Previous *string        `json:"previous"`
+	Results  []SearchResult `json:"results"`
+}
+
+// SearchResult represents a single search result.
+type SearchResult struct {
+	AbsoluteURL              string    `json:"absolute_url"`
+	Attorney                 string    `json:"attorney"`
+	CaseName                 string    `json:"caseName"`
+	CaseNameFull             string    `json:"caseNameFull"`
+	Citation                 []string  `json:"citation"`
+	CiteCount                int       `json:"citeCount"`
+	ClusterID                int       `json:"cluster_id"`
+	Court                    string    `json:"court"`
+	CourtCitationString      string    `json:"court_citation_string"`
+	CourtID                  string    `json:"court_id"`
+	DateArgued               *string   `json:"dateArgued"`
+	DateFiled                string    `json:"dateFiled"`
+	DateReargued             *string   `json:"dateReargued"`
+	DateReargumentDenied     *string   `json:"dateReargumentDenied"`
+	DocketNumber             string    `json:"docketNumber"`
+	DocketID                 int       `json:"docket_id"`
+	Judge                    string    `json:"judge"`
+	LexisCite                string    `json:"lexisCite"`
+	Meta                     Meta      `json:"meta"`
+	NeutralCite              string    `json:"neutralCite"`
+	NonParticipatingJudgeIDs []int     `json:"non_participating_judge_ids"`
+	Opinions                 []Opinion `json:"opinions"`
+	PanelIDs                 []int     `json:"panel_ids"`
+	PanelNames               []string  `json:"panel_names"`
+	Posture                  string    `json:"posture"`
+	ProceduralHistory        string    `json:"procedural_history"`
+	ScdbID                   string    `json:"scdb_id"`
+	SiblingIDs               []int     `json:"sibling_ids"`
+	Source                   string    `json:"source"`
+	Status                   string    `json:"status"`
+	SuitNature               string    `json:"suitNature"`
+	Syllabus                 string    `json:"syllabus"`
+}
+
 // Opinion represents an opinion object within a search result.
 type Opinion struct {
 	AuthorID    interface{} `json:"author_id"`
@@ -145,4 +189,32 @@ type Docket struct {
 	Slug                           string        `json:"slug"`
 	Source                         int           `json:"source"`
 	Tags                           []interface{} `json:"tags"`
+}
+
+// OriginatingCourtInformationResponse represents the response structure from the originating-court-information endpoint.
+type OriginatingCourtInformationResponse struct {
+	Count    string                        `json:"count"`
+	Next     string                        `json:"next"`
+	Previous *string                       `json:"previous"`
+	Results  []OriginatingCourtInformation `json:"results"`
+}
+
+// OriginatingCourtInformation represents a single originating court record.
+type OriginatingCourtInformation struct {
+	AssignedTo       *string `json:"assigned_to"`
+	AssignedToStr    string  `json:"assigned_to_str"`
+	CourtReporter    string  `json:"court_reporter"`
+	DateCreated      string  `json:"date_created"`
+	DateDisposed     *string `json:"date_disposed"`
+	DateFiled        *string `json:"date_filed"`
+	DateFiledNOA     *string `json:"date_filed_noa"`
+	DateJudgment     *string `json:"date_judgment"`
+	DateJudgmentEOD  *string `json:"date_judgment_eod"`
+	DateModified     string  `json:"date_modified"`
+	DateReceivedCOA  *string `json:"date_received_coa"`
+	DocketNumber     string  `json:"docket_number"`
+	ID               int     `json:"id"`
+	OrderingJudge    *string `json:"ordering_judge"`
+	OrderingJudgeStr string  `json:"ordering_judge_str"`
+	ResourceURI      string  `json:"resource_uri"`
 }

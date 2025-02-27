@@ -7,50 +7,6 @@ import (
 	"net/url"
 )
 
-// SearchResponse represents the response from the search endpoint.
-type SearchResponse struct {
-	Count    int            `json:"count"`
-	Next     string         `json:"next"`
-	Previous *string        `json:"previous"`
-	Results  []SearchResult `json:"results"`
-}
-
-// SearchResult represents a single search result.
-type SearchResult struct {
-	AbsoluteURL              string    `json:"absolute_url"`
-	Attorney                 string    `json:"attorney"`
-	CaseName                 string    `json:"caseName"`
-	CaseNameFull             string    `json:"caseNameFull"`
-	Citation                 []string  `json:"citation"`
-	CiteCount                int       `json:"citeCount"`
-	ClusterID                int       `json:"cluster_id"`
-	Court                    string    `json:"court"`
-	CourtCitationString      string    `json:"court_citation_string"`
-	CourtID                  string    `json:"court_id"`
-	DateArgued               *string   `json:"dateArgued"`
-	DateFiled                string    `json:"dateFiled"`
-	DateReargued             *string   `json:"dateReargued"`
-	DateReargumentDenied     *string   `json:"dateReargumentDenied"`
-	DocketNumber             string    `json:"docketNumber"`
-	DocketID                 int       `json:"docket_id"`
-	Judge                    string    `json:"judge"`
-	LexisCite                string    `json:"lexisCite"`
-	Meta                     Meta      `json:"meta"`
-	NeutralCite              string    `json:"neutralCite"`
-	NonParticipatingJudgeIDs []int     `json:"non_participating_judge_ids"`
-	Opinions                 []Opinion `json:"opinions"`
-	PanelIDs                 []int     `json:"panel_ids"`
-	PanelNames               []string  `json:"panel_names"`
-	Posture                  string    `json:"posture"`
-	ProceduralHistory        string    `json:"procedural_history"`
-	ScdbID                   string    `json:"scdb_id"`
-	SiblingIDs               []int     `json:"sibling_ids"`
-	Source                   string    `json:"source"`
-	Status                   string    `json:"status"`
-	SuitNature               string    `json:"suitNature"`
-	Syllabus                 string    `json:"syllabus"`
-}
-
 // Search performs a GET request to the search endpoint with the provided query string.
 func (c *Client) Search(query string) (*SearchResponse, error) {
 	base, err := url.Parse(c.BaseURL)

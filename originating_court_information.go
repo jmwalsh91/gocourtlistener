@@ -8,34 +8,6 @@ import (
 	"net/url"
 )
 
-// OriginatingCourtInformationResponse represents the response structure from the originating-court-information endpoint.
-type OriginatingCourtInformationResponse struct {
-	Count    string                        `json:"count"`
-	Next     string                        `json:"next"`
-	Previous *string                       `json:"previous"`
-	Results  []OriginatingCourtInformation `json:"results"`
-}
-
-// OriginatingCourtInformation represents a single originating court record.
-type OriginatingCourtInformation struct {
-	AssignedTo       *string `json:"assigned_to"`
-	AssignedToStr    string  `json:"assigned_to_str"`
-	CourtReporter    string  `json:"court_reporter"`
-	DateCreated      string  `json:"date_created"`
-	DateDisposed     *string `json:"date_disposed"`
-	DateFiled        *string `json:"date_filed"`
-	DateFiledNOA     *string `json:"date_filed_noa"`
-	DateJudgment     *string `json:"date_judgment"`
-	DateJudgmentEOD  *string `json:"date_judgment_eod"`
-	DateModified     string  `json:"date_modified"`
-	DateReceivedCOA  *string `json:"date_received_coa"`
-	DocketNumber     string  `json:"docket_number"`
-	ID               int     `json:"id"`
-	OrderingJudge    *string `json:"ordering_judge"`
-	OrderingJudgeStr string  `json:"ordering_judge_str"`
-	ResourceURI      string  `json:"resource_uri"`
-}
-
 // OriginatingCourtInformation retrieves records from the originating-court-information endpoint.
 // The params argument can be used to supply query parameters (e.g. "cursor", "count").
 func (c *Client) OriginatingCourtInformation(params map[string]string) (*OriginatingCourtInformationResponse, error) {
