@@ -36,9 +36,9 @@ func NewClient(baseURL, email string, client HTTPClient) *Client {
 // Note: Some endpoints may represent count as a URL string while others as a number.
 type Pagination struct {
 	// Count can be either an int or a string depending on the endpoint.
-	Count    interface{} `json:"count"`
-	Next     string      `json:"next"`
-	Previous *string     `json:"previous"`
+	Count    FlexibleCount `json:"count"`
+	Next     string        `json:"next"`
+	Previous *string       `json:"previous"`
 }
 
 // Meta contains common metadata for API responses.
@@ -116,18 +116,18 @@ type Opinion struct {
 
 // OpinionsResponse represents the response from the opinions endpoint.
 type OpinionsResponse struct {
-	Count    int       `json:"count"`
-	Next     string    `json:"next"`
-	Previous *string   `json:"previous"`
-	Results  []Opinion `json:"results"`
+	Count    FlexibleCount `json:"count"`
+	Next     string        `json:"next"`
+	Previous *string       `json:"previous"`
+	Results  []Opinion     `json:"results"`
 }
 
 // DocketsResponse represents the response structure returned by the dockets endpoint.
 type DocketsResponse struct {
-	Count    string   `json:"count"`
-	Next     string   `json:"next"`
-	Previous *string  `json:"previous"`
-	Results  []Docket `json:"results"`
+	Count    FlexibleCount `json:"count"`
+	Next     string        `json:"next"`
+	Previous *string       `json:"previous"`
+	Results  []Docket      `json:"results"`
 }
 
 // Docket represents a single docket record.
