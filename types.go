@@ -23,7 +23,7 @@ type Client struct {
 // If client is nil, a default http.Client with a 10-second timeout is used.
 func NewClient(baseURL, email string, client HTTPClient) *Client {
 	if client == nil {
-		client = &http.Client{Timeout: 10 * time.Second}
+		client = &http.Client{Timeout: 30 * time.Second}
 	}
 	return &Client{
 		BaseURL:    baseURL,
